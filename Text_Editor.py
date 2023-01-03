@@ -1,7 +1,15 @@
 import PySimpleGUI as sg
 
+smileys = []
+
+menu_layout = [
+    ['File', ['Open','Save','---','Exit']],
+    ['Tools', ['Word Count']],
+    ['Add', smileys]
+]
+
 layout = [
-    #[sg.Menu(menu_layout)],
+    [sg.Menu(menu_layout)],
     [sg.Text('Untitled', key = '-DOCNAME-')],
     [sg.Multiline()]
 ]
