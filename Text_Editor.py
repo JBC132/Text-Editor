@@ -5,6 +5,7 @@ smileys = [
     'sad',[':(','T_T'],
     'other',[':3']
 ]
+smiley_events = smileys[1] + smileys[3] + smileys[5]
 
 menu_layout = [
     ['File', ['Open','Save','---','Exit']],
@@ -12,10 +13,11 @@ menu_layout = [
     ['Add', smileys]
 ]
 
+sg.theme('GrayGrayGray')
 layout = [
     [sg.Menu(menu_layout)],
     [sg.Text('Untitled', key = '-DOCNAME-')],
-    [sg.Multiline()]
+    [sg.Multiline(no_scrollbar=True, size = (40,30), key = '-TEXTBOX-')]
 ]
 
 window = sg.Window('Text Editor', layout)
