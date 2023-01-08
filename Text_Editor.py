@@ -1,4 +1,5 @@
 import PySimpleGUI as sg
+from pathlib import Path
 
 smileys = [
     'happy',[':)','XD',':D','<3'],
@@ -26,7 +27,15 @@ while True:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
         break
-
+    
+    if event == 'Open':
+        file_path = sg.popup_get_file('open', no_window = True)
+        if file_path:
+            file = Path(file_path)
+            print(file.read_text())
+            window['-TEXTBOX-'].update(file.read_text())
+            window['-DOCNAME-'].update(file_path.split('/')[-1])
+    
     if event == 'Word Count':
         full_text = values['-TEXTBOX-']
         clean_text = full_text.replace('\n', ' ').split(' ')
